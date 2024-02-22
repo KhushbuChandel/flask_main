@@ -1,0 +1,23 @@
+ <html>
+
+<h2>Final Results</h2>
+
+<body>
+     <!-- The output is {{result}}
+ {% if result>= 50 %}
+    <h1>Your Result is Passed</h1>
+    {%else %}
+    <h1>Your result is failed</h1>
+    {% endif %}  -->
+     <table border="2">
+        {% for key,value in result.items() %}
+        <tr>
+            <th>{{ key }}</th>
+            <th>{{ value }}</th>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+ 
+  
