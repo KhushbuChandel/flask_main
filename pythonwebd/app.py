@@ -7,8 +7,10 @@ app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///database.sqlite3"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
+app.app_context().push()
 
 class Todo(db.Model):
+    
     sno = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(200), nullable=False)
     desc = db.Column(db.String(500), nullable=False)
@@ -19,11 +21,17 @@ class Todo(db.Model):
 
 @app.route('/')
 def hello_world():
-    return render_template('index.html')
-    return 'Hello, World!'
+    with app.app_context():
+        # Accessing the database within the application context
+        todos = Todo.query.all()
+    return render_template('index.html', todos=todos)
+
 @app.route('/products')
 def products():
     return 'this is products page'
 
-if __name__=="__main__":
+if __name__ == "__main__":
+    with app.app_context():
+        # Create the database tables if they don't exist
+        db.create_all()
     app.run(debug=True)
