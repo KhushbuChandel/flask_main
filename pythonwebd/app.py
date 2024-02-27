@@ -21,6 +21,11 @@ class Todo(db.Model):
 
 @app.route('/')
 def hello_world():
+
+    todo = Todo(title="First Todo", desc="Start investing in Stock market")
+    db.session.add(todo) 
+    db.session.commit()
+    
     with app.app_context():
         # Accessing the database within the application context
         todos = Todo.query.all()
