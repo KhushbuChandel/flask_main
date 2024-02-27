@@ -11,6 +11,7 @@ def generate_frames():
         success,frame=camera.read()
         if not success:
             break
+        
         else:
            ret,buffer=cv2.imencode ('.jpg',frame)
            frame=buffer.tobytes()
