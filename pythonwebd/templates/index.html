@@ -71,19 +71,23 @@
         <thead>
           <tr>
             <th scope="col">SNo</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Time</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
+          {% for Todo in allTodo %}
+            <tr>
+            <th scope="row">{{todo.sno}}</th>
+            <td>{{todo.title}}</td>
+            <td>{{todo.desc}}</td>
+            <td>{{todo.date_created}}</td>
+            </tr>
+          {% endfor %}
+          
+
+          <!-- <tr>
             <th scope="row">2</th>
             <td>Jacob</td>
             <td>Thornton</td>
@@ -94,7 +98,7 @@
             <td>Larry</td>
             <td>the Bird</td>
             <td>@twitter</td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
 </div>

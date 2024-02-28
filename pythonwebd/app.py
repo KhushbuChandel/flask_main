@@ -26,13 +26,16 @@ def hello_world():
     db.session.add(todo) 
     db.session.commit()
     
-    with app.app_context():
+    #with app.app_context():
         # Accessing the database within the application context
-        todos = Todo.query.all()
-    return render_template('index.html', todos=todos)
+    allTodo = Todo.query.all()
+    return render_template('index.html', allTodo=allTodo)
 
-@app.route('/products')
+# @app.route('/products')
+@app.route('/show')
 def products():
+    allTodo = Todo.query.all()
+    print(allTodo)
     return 'this is products page'
 
 if __name__ == "__main__":
