@@ -25,11 +25,8 @@ def hello_world():
     todo = Todo(title="First Todo", desc="Start investing in Stock market")
     db.session.add(todo) 
     db.session.commit()
-    
-    #with app.app_context():
-        # Accessing the database within the application context
     allTodo = Todo.query.all()
-    return render_template('index.html', allTodo=allTodo)
+    return render_template('index.html')
 
 # @app.route('/products')
 @app.route('/show')
