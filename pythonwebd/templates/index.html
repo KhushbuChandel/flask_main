@@ -14,7 +14,7 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">My-TO-DO</a>
+        <a class="navbar-brand" href="/">My-TO-DO</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -50,15 +50,15 @@
     </nav>
     <div class="container my-3">
         <h2>Add a Todo list</h2>
-        <form>
+        <form action="/" method="POST">
             <div class="form-group">
                 <label for="title">TOdo Title</label>
-                <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+                <input type="text" class="form-control" name="title" id="title" aria-describedby="emailHelp">
 
             </div>
             <div class="form-group">
                 <label for="desc">Todo Description</label>
-                <input type="text" class="form-control" id="desc">
+                <input type="text" class="form-control" name="desc" id="desc">
             </div>
             <!-- <div class="form-group form-check">
       <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -79,9 +79,9 @@
                 </tr>
             </thead>
             <tbody>
-                {% for Todo in allTodo %}
+                {% for todo in allTodo %}
                 <tr>
-                    <th scope="row">{{todo.sno}}</th>
+                    <th scope="row">{{loop.index}}</th>
                     <td>{{todo.title}}</td>
                     <td>{{todo.desc}}</td>
                     <td>{{todo.date_created}}</td>
